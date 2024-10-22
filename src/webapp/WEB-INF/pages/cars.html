@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cars</title>
+</head>
+<body>
+<div class="container" th:with="intList = ${ {1, 2, 3, 4, 5} }">
+    <div>
+        Show
+        <a th:each="c : ${intList}" th:href="@{/cars(count=${c})}" th:text="|&nbsp;${c}&nbsp;|"/>
+        <a th:href="@{/cars}" th:text="all"/>
+    </div>
+</div>
+<div class="container">
+    <div>
+        <table align="center" cellpadding="7" border="2" width="100%" bgcolor="#008b8b">
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Color</th>
+                <th>Year</th>
+            </tr>
+        <tr th:each="car : ${cars}">
+            <td th:utext="${car.getBrand()}"></td>
+            <td th:utext="${car.getModel()}"></td>
+            <td th:utext="${car.getColor()}"></td>
+            <td th:utext="${car.getYear()}"></td>
+            </tr>
+            </table>
+    </div>
+</div>
+</body>
+</html>
